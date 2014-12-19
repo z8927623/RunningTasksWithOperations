@@ -1,8 +1,8 @@
 //
 //  ViewController.m
-//  RunningTasksSynchronouslyWithOperations
+//  RunningTasksSynchronouslyWithOperations_
 //
-//  Created by wildyao on 14/12/18.
+//  Created by wildyao on 14/12/19.
 //  Copyright (c) 2014年 Wild Yaoyao. All rights reserved.
 //
 
@@ -22,13 +22,10 @@
     [super viewDidLoad];
     
     self.simpleOperation = [[CountingOperation alloc] initWithStartingCount:0
-                                                                endingCount:10000];
+                                                                endingCount:100000];
     self.operationQueue = [[NSOperationQueue alloc] init];
-    // 在主线程运行
     [self.simpleOperation start];
 //    [self.operationQueue addOperation:self.simpleOperation];
-    
-    NSLog(@"Main thread is here");
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.frame = CGRectMake(10, 10, 300, 80);
@@ -40,7 +37,7 @@
 - (void)cancel:(id)sender
 {
     [self.simpleOperation cancel];
-//    [self.operationQueue cancelAllOperations];
+    //    [self.operationQueue cancelAllOperations];
 }
 
 @end

@@ -1,8 +1,8 @@
 //
 //  CountingOperation.m
-//  RunningTasksSynchronouslyWithOperations
+//  RunningTasksSynchronouslyWithOperations_
 //
-//  Created by wildyao on 14/12/18.
+//  Created by wildyao on 14/12/19.
 //  Copyright (c) 2014年 Wild Yaoyao. All rights reserved.
 //
 
@@ -40,6 +40,24 @@
     return self;
 }
 
+- (void)start
+{
+    if (self.isCancelled) {
+        
+        [self willChangeValueForKey:@"isFinished"];
+        finished = YES;
+        [self didChangeValueForKey:@"isFinished"];
+        
+        return;
+    } else {
+        [self willChangeValueForKey:@"isExecuting"];
+        executing = YES;
+        [self didChangeValueForKey:@"isExecuting"];
+        
+        [self main];
+    }
+}
+
 - (void)main
 {
     @try {
@@ -68,7 +86,6 @@
             
             [self didChangeValueForKey:@"isFinished"];
             [self didChangeValueForKey:@"isExecuting"];
-            
         }
     }
     @catch (NSException *exception) {
@@ -82,5 +99,14 @@
     return NO;
 }
 
+- (BOOL)isFinished
+{
+    return finished;
+}
+
+- (BOOL)isExecuting
+{
+    return executing;
+}
 
 @end

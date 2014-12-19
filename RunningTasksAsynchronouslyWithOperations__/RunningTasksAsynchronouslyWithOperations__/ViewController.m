@@ -1,8 +1,8 @@
 //
 //  ViewController.m
-//  RunningTasksAsynchronouslyWithOperations
+//  RunningTasksAsynchronouslyWithOperations__
 //
-//  Created by wildyao on 14/12/18.
+//  Created by wildyao on 14/12/19.
 //  Copyright (c) 2014年 Wild Yaoyao. All rights reserved.
 //
 
@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     NSNumber *firstNumber = @111;
     NSNumber *secondNumber = @222;
     
@@ -34,6 +34,7 @@
     [self.operationQueue addOperation:self.secondOperation];
     
     NSLog(@"Main thread is here");
+
 }
 
 

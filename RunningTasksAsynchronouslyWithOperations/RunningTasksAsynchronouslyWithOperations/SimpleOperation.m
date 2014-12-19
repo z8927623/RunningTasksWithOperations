@@ -16,9 +16,6 @@
 
 @property (nonatomic, strong) NSObject *givenObject;
 
-//@property (nonatomic, assign) BOOL executing;
-//@property (nonatomic, assign) BOOL executing;
-
 @end
 
 @implementation SimpleOperation
@@ -34,7 +31,6 @@
     self = [super init];
     if (self != nil) {
         _givenObject = paramObject;
-        
     }
     
     return self;
@@ -44,9 +40,12 @@
 {
     @try {
         @autoreleasepool {
+            
             BOOL taskIsFinished = NO;
             
             while (taskIsFinished == NO && self.isCancelled ==  NO) {
+                
+                NSLog(@"Parameter Object = %@", _givenObject);
                 NSLog(@"Main Thread: %@", [NSThread mainThread]);
                 NSLog(@"Current Thread: %@", [NSThread currentThread]);
                 
@@ -70,10 +69,9 @@
 }
 
 // isConcurrent是标识这个Operation是否是并发执行的，这里曾经是个坑，如果你没有实现isConcurrent，默认是返回NO，那么你的NSOperation就不是并发执行而是串行执行的，不过在iOS5.0和OS X10.6之后，已经会默认忽略这个返回值
-//- (BOOL)isConcurrent
-//{
-//    return YES;
-//}
-
+- (BOOL)isConcurrent
+{
+    return YES;
+}
 
 @end
