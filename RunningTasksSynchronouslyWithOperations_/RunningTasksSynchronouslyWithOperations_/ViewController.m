@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     self.simpleOperation = [[CountingOperation alloc] initWithStartingCount:0
-                                                                endingCount:100000];
+                                                                endingCount:10000];
     self.operationQueue = [[NSOperationQueue alloc] init];
     [self.simpleOperation start];
 //    [self.operationQueue addOperation:self.simpleOperation];
